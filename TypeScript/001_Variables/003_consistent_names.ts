@@ -34,3 +34,11 @@ export class UserRepository {
     return this._users.find((user) => user.id === userId);
   }
 }
+
+export function getUserName(user: IUser): string {
+  return user.name;
+}
+
+export function sendEmailToUser(user: IUser): void {
+  console.log(`Sending email to ${user.email}`);
+}

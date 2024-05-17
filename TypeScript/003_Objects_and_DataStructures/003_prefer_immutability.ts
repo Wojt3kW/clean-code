@@ -32,7 +32,7 @@ export class MutableExample {
     array = [];
     array.push(2);
     array.length = 0;
-    console?.log(array);
+    console.log(array);
   }
 
   public mutableArguments(args: string[]): void {
@@ -66,7 +66,7 @@ export abstract class ImmutableExample {
     const array: readonly number[] = [1, 2, 3];
     // array = []; // error - Cannot assign to 'array' because it is a read-only property
     // array.push(100); // error - Property 'push' does not exist on type 'readonly number[]'
-    console?.log(array);
+    console.log(array);
   }
 
   public immutableArguments(args: readonly string[]): void {

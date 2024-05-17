@@ -16,6 +16,7 @@ class UserWithBadProperties {
 
 const badUser = new UserWithBadProperties();
 badUser.sName = 'John';
+badUser.setEmail('john@email.com');
 
 class UserWithGoodProperties {
   private _email: string;
@@ -30,3 +31,4 @@ class UserWithGoodProperties {
 
 const goodUser = new UserWithGoodProperties();
 goodUser.name = 'John';
+goodUser.setEmail('john@email.com');

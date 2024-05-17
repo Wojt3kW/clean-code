@@ -147,4 +147,4 @@ export class GoodAltitudeCalculator {
 
 // Użycie
 const altitude = GoodAltitudeCalculator.calculate(AirPlaneType.Boeing777);
-console?.log(altitude);
+console.log(altitude);

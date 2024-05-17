@@ -8,7 +8,7 @@ interface ICarWithContext {
 
 export abstract class BadNames {
   public print(car: ICarWithContext): void {
-    console?.log(`${car.carMake} ${car.carModel} (${car.carColor})`);
+    console.log(`${car.carMake} ${car.carModel} (${car.carColor})`);
   }
 }
 
@@ -20,7 +20,7 @@ interface ICar {
 
 export abstract class GoodNames {
   public print(car: ICar): void {
-    console?.log(`${car.make} ${car.model} (${car.color})`);
+    console.log(`${car.make} ${car.model} (${car.color})`);
   }
 }
 

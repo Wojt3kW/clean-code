@@ -6,13 +6,13 @@ export class Location {
 
 export class Bicycle {
   public ride(start: Location, end: Location): void {
-    console?.log(`Riding from ${start.name} to ${end.name}.`);
+    console.log(`Riding from ${start.name} to ${end.name}.`);
   }
 }
 
 export class Car {
   public drive(start: Location, end: Location): void {
-    console?.log(`Driving from ${start.name} to ${end.name}.`);
+    console.log(`Driving from ${start.name} to ${end.name}.`);
   }
 }
 

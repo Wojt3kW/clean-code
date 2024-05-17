@@ -37,24 +37,26 @@ export abstract class BaseClass {
   }
 }
 
-export class BadNames extends BaseClass {
+// klasa ze zmiennymi mapowanymi w myślach
+export class ClassWithMentalNames extends BaseClass {
   public constructor() {
     super();
 
     const u = this.getUser();
     const s = this.getSubscription();
     const p = this.getPayment(u, s);
-    console?.log(p);
+    console.log(p);
   }
 }
 
-export class GoodNames extends BaseClass {
+// klasa ze zmiennymi o jasnych nazwach
+export class ClassWithExplanatoryNames extends BaseClass {
   public constructor() {
     super();
 
     const user: IUser = this.getUser();
     const subscription: SUBSCRIPTION_TYPE = this.getSubscription();
     const payment: IPayment = this.getPayment(user, subscription);
-    console?.log(payment);
+    console.log(payment);
   }
 }

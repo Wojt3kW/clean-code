@@ -6,7 +6,7 @@ export class BadNames {
 
     // Trudno jest powiedzieć, na podstawie nazwy funkcji, co jest dodawane do daty
     const newDate = this.addToDate(date, 1);
-    console?.log(newDate);
+    console.log(newDate);
   }
 
   private addToDate(date: Date, month: number): Date {
@@ -21,7 +21,7 @@ export class GoodNames {
     // Nazwa funkcji jasno określa, co jest dodawane i do daty
     // Dodaje miesiąc do daty
     const newDate = this.addMonthToDate(date, 1);
-    console?.log(newDate);
+    console.log(newDate);
   }
 
   private addMonthToDate(date: Date, month: number): Date {
