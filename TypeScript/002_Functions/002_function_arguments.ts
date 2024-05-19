@@ -10,31 +10,24 @@ export class BadFunctions {
   }
 }
 
-interface IMenuItemOptions {
-  caption: string,
-  fontColor: string,
-  backgroundColor: string,
-  fontSize?: string,
-  icon?: string,
-  iconColor?: string,
-  iconBackgroundColor?: string,
-  iconSize?: string,
-  enabled?: boolean,
-  onClick?: () => void,
-}
-
 export class GoodFunctions {
   public constructor() {
     this.setMenuItem({
       caption: 'Home',
-      icon: '<icon=>',
       fontColor: 'red',
       backgroundColor: 'white',
+      icon: '<icon=>',
       enabled: true,
-    } satisfies IMenuItemOptions);
+    });
   }
 
-  private setMenuItem(menuOptions: IMenuItemOptions): void {
+  private setMenuItem(menu: {
+    caption: string;
+    fontColor: string;
+    backgroundColor: string;
+    icon: string;
+    enabled: boolean;
+  }): void {
     // ...
   }
 }

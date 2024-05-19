@@ -1,4 +1,4 @@
-import '../002_Functions/date.extensions';
+import './date.extensions';
 
 // Nazywaj funkcje zgodnie z ich przeznaczeniem
 export class BadFunctionName {
