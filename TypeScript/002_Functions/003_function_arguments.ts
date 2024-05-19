@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // Nie przesadzaj z ilością parametrów funkcji
 
 export class BadFunctions {
@@ -5,11 +6,7 @@ export class BadFunctions {
     this.setMenuItem('Home', 'red', 'white', '<icon=>');
   }
 
-  private setMenuItem(
-    caption: string,
-    fontColor: string,
-    backgroundColor: string,
-    icon: string): void {
+  private setMenuItem(caption: string, fontColor: string, backgroundColor: string, icon: string): void {
     // ...
   }
 }

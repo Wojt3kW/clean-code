@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+/* eslint-disable @typescript-eslint/naming-convention */
 // Używaj domyślnych parametrów zamiast warunków czy parametrów opcjonalnych
 
 export abstract class FunctionWithOptionalParameters {

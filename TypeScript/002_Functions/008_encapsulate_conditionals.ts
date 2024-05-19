@@ -8,10 +8,10 @@ class Account {
   public balance: number;
 }
 
-export abstract class ActivatorBadConditions {
+export abstract class ServiceActivatorWithConditionals {
   public constructor(
-    private readonly subscription: Subscription,
-    private readonly account: Account,
+    readonly subscription: Subscription,
+    readonly account: Account,
   ) {
     if (subscription.isTrial || account.balance > 0) {
       // ...
@@ -19,17 +19,57 @@ export abstract class ActivatorBadConditions {
   }
 }
 
-export abstract class ActivatorGoodConditions {
+export abstract class ServiceActivatorWithEncapsulatedConditionals {
   public constructor(
     readonly subscription: Subscription,
     readonly account: Account,
   ) {
-    if (this.canActivateService(subscription, account)) {
+    if (this.canActivate(subscription, account)) {
       // ...
     }
   }
 
-  private canActivateService(subscription: Subscription, account: Account): boolean {
+  private canActivate(subscription: Subscription, account: Account): boolean {
     return subscription.isTrial || account.balance > 0;
+  }
+}
+
+class User {
+  private readonly _roles: string[] = [];
+
+  public hasRole(role: string): boolean {
+    return this._roles.includes(role);
+  }
+}
+
+export class TextEditorWithConditionals {
+  private readonly _user: User;
+
+  public constructor(user: User) {
+    this._user = user;
+  }
+
+  public isReadOnly(): boolean {
+    if (this._user.hasRole('admin') || this._user.hasRole('editor') || this._user.hasRole('moderator')) {
+      return false;
+    }
+
+    return true;
+  }
+}
+
+export class TextEditorWithEncapsulatedConditionals {
+  private readonly _user: User;
+
+  public constructor(user: User) {
+    this._user = user;
+  }
+
+  public isReadOnly(): boolean {
+    return !this.userCanEditArticle(this._user);
+  }
+
+  private userCanEditArticle(user: User): boolean {
+    return user.hasRole('admin') || user.hasRole('editor') || user.hasRole('moderator');
   }
 }

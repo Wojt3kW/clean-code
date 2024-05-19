@@ -18,7 +18,7 @@ export abstract class BadNegativeConditionals {
   public constructor() {
     const email = 'email@domain.com';
     if (this.isEmailNotUsed(email)) {
-      // ...
+      console.log('Email is not used');
     }
   }
 }
@@ -41,7 +41,7 @@ export abstract class GoodConditionals {
   public constructor() {
     const email = 'email@domain.com';
     if (this.isEmailUsed(email)) {
-      // ...
+      console.log('Email is used');
     }
   }
 }

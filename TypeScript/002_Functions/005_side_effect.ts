@@ -5,11 +5,10 @@
 export class BadFunctionWithSideEffect {
   private _name: string = 'Side effect';
 
-  constructor() {
+  public getEncodedName(): string {
     this.toBase64();
     // od tej pory 'name' będzie miało nową wartość
-
-    console.log(this._name); // 'Side effect' <-> 'U2lkZSBlZmZlY3Q='
+    return this._name; // _name = 'Side effect' => _name = 'U2lkZSBlZmZlY3Q='
   }
 
   private toBase64(): void {
@@ -20,10 +19,9 @@ export class BadFunctionWithSideEffect {
 export class GoodFunctionWithoutSideEffect {
   private readonly _name: string = 'Side effect';
 
-  constructor() {
+  public getEncodedName(): string {
     const encodedName = this.toBase64(this._name);
-    console.log(encodedName);
-    console.log(this._name);
+    return encodedName;
   }
 
   private toBase64(text: string): string {

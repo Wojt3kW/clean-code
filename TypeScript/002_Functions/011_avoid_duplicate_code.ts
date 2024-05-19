@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-magic-numbers */
 // Nie twórz powtarzającego się kodu (DRY - Don't Repeat Yourself)
 
 abstract class Employee {
@@ -15,7 +17,7 @@ abstract class Employee {
   public abstract calculateProposedSalary(baseSalary: number): number;
   public abstract getExtraDetails(): Record<string, string>;
 
-  public getExperience(): number {
+  public getYearsOfExperience(): number {
     return new Date().getFullYear() - this.employmentDate.getFullYear();
   }
 }
@@ -34,7 +36,7 @@ class Developer extends Employee {
   }
 
   public override calculateProposedSalary(baseSalary: number): number {
-    return baseSalary + (this.getExperience() + 1) * 500;
+    return baseSalary + (this.getYearsOfExperience() + 1) * 500;
   }
 }
 
@@ -52,7 +54,7 @@ class Manager extends Employee {
   }
 
   public override calculateProposedSalary(baseSalary: number): number {
-    return baseSalary * 2 + (this.getExperience() + 1) * 500;
+    return baseSalary * 2 + (this.getYearsOfExperience() + 1) * 500;
   }
 }
 
@@ -82,7 +84,7 @@ export class RendererWithDuplicatedCode extends BaseRenderer {
   private renderDevelopers(developers: Developer[]): void {
     developers.forEach(developer => {
       const expectedSalary = developer.calculateProposedSalary(this.baseSalary);
-      const experience = developer.getExperience();
+      const experience = developer.getYearsOfExperience();
       const githubLink = developer.getGithubLink();
 
       const data = {
@@ -98,7 +100,7 @@ export class RendererWithDuplicatedCode extends BaseRenderer {
   private renderManagers(managers: Manager[]): void {
     managers.forEach(manager => {
       const expectedSalary = manager.calculateProposedSalary(this.baseSalary);
-      const experience = manager.getExperience();
+      const experience = manager.getYearsOfExperience();
       const portfolio = manager.getMBAProjects();
 
       const data = {
@@ -123,7 +125,7 @@ export class RendererWithoutDuplicatedCode extends BaseRenderer {
   private renderEmployees(employees: Array<Developer | Manager>): void {
     employees.forEach(employee => {
       const expectedSalary = employee.calculateProposedSalary(this.baseSalary);
-      const experience = employee.getExperience();
+      const experience = employee.getYearsOfExperience();
       const extra = employee.getExtraDetails();
 
       const data = {

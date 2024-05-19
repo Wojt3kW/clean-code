@@ -8,11 +8,11 @@ interface IDbConfigMutable {
 }
 
 class DbConfigMutable implements IDbConfigMutable {
-  hostName: string;
-  portNumber: number;
-  dbName: string;
+  public hostName: string;
+  public portNumber: number;
+  public dbName: string;
 
-  constructor(host: string, port: number, db: string) {
+  public constructor(host: string, port: number, db: string) {
     this.hostName = host;
     this.portNumber = port;
     this.dbName = db;
@@ -20,7 +20,7 @@ class DbConfigMutable implements IDbConfigMutable {
 }
 
 export class MutableExample {
-  public getConfig(): DbConfigMutable {
+  public getDbConfig(): DbConfigMutable {
     const config = new DbConfigMutable('localhost', 3306, 'myDb');
     config.dbName = 'otherDb';
     return config;
@@ -48,7 +48,7 @@ interface IDbConfigImmutable {
 }
 
 class DbConfigImmutable implements IDbConfigImmutable {
-  constructor(
+  public constructor(
     public readonly hostName: string,
     public readonly portNumber: number,
     public readonly dbName: string
