@@ -1,4 +1,7 @@
 /* eslint-disable no-magic-numbers */
+
+import './array.extensions';
+
 // Przedkładaj programowanie funkcyjne nad programowanie imperatywne
 
 abstract class FunctionalStyleOverImperativeStyle {
@@ -52,6 +55,11 @@ export class ImperativeStyle extends FunctionalStyleOverImperativeStyle {
   }
 }
 
+const imperativeStyle = new ImperativeStyle();
+console.log('ImperativeStyle, sum:', imperativeStyle.calculateSum());
+console.log('ImperativeStyle, odd numbers:', imperativeStyle.getOddNumbers());
+console.log('ImperativeStyle, select 8:', imperativeStyle.select8());
+
 // Funkcyjny styl programowania:
 // - opiera się na funkcjach, które nie zmieniają stanu programu
 // - zwracamy wartość w bezstanowy sposób
@@ -60,7 +68,7 @@ export class ImperativeStyle extends FunctionalStyleOverImperativeStyle {
 // - kod jest bardziej czytelny, łatwiejszy do zrozumienia
 export class FunctionalStyle extends FunctionalStyleOverImperativeStyle {
   public calculateSum(): number {
-    return this.numbers.reduce((sum, current) => sum + current, 0);
+    return this.numbers.sum();
   }
 
   public getOddNumbers(): number[] {
@@ -77,3 +85,8 @@ export class FunctionalStyle extends FunctionalStyleOverImperativeStyle {
     return filteredNumbers.length > 0 ? filteredNumbers[0] : null;
   }
 }
+
+const functionalStyle = new FunctionalStyle();
+console.log('FunctionalStyle, sum:', functionalStyle.calculateSum());
+console.log('FunctionalStyle, odd numbers:', functionalStyle.getOddNumbers());
+console.log('FunctionalStyle, select 8:', functionalStyle.select8());

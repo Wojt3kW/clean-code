@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/no-this-alias */
 /* eslint-disable no-extend-native */
 /* eslint-disable @typescript-eslint/method-signature-style */

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-extraneous-class */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable @typescript-eslint/naming-convention */
 // cztery filary programowania obiektowego: abstrakcja, polimorfizm, dziedziczenie, hermetyzacja
@@ -62,90 +63,90 @@ const badAltitudeCalculator = new BadAltitudeCalculator();
 const bestAltitude = badAltitudeCalculator.getCruisingAltitude(AirPlaneType.Boeing777);
 console.log(bestAltitude);
 
-// abstract class AirPlane {
-//   public abstract getCruisingAltitude(): number;
+abstract class AirPlane {
+  public abstract getCruisingAltitude(): number;
 
-//   protected abstract getPassengerCount(): number;
-//   protected abstract getFuelExpenditure(): number;
-//   protected abstract getMaxAltitude(): number;
-// }
+  protected abstract getPassengerCount(): number;
+  protected abstract getFuelExpenditure(): number;
+  protected abstract getMaxAltitude(): number;
+}
 
-// export class Boeing777 extends AirPlane {
-//   public getCruisingAltitude(): number {
-//     return this.getMaxAltitude() - this.getPassengerCount();
-//   }
+export class Boeing777 extends AirPlane {
+  public getCruisingAltitude(): number {
+    return this.getMaxAltitude() - this.getPassengerCount();
+  }
 
-//   protected override getPassengerCount(): number {
-//     return 300;
-//   }
+  protected override getPassengerCount(): number {
+    return 300;
+  }
 
-//   protected override getFuelExpenditure(): number {
-//     return 500;
-//   }
+  protected override getFuelExpenditure(): number {
+    return 500;
+  }
 
-//   protected override getMaxAltitude(): number {
-//     return 20000;
-//   }
-// }
+  protected override getMaxAltitude(): number {
+    return 20000;
+  }
+}
 
-// export class AirForceOne extends AirPlane {
-//   public getCruisingAltitude(): number {
-//     return this.getMaxAltitude();
-//   }
+export class AirForceOne extends AirPlane {
+  public getCruisingAltitude(): number {
+    return this.getMaxAltitude();
+  }
 
-//   protected override getPassengerCount(): number {
-//     return 200;
-//   }
+  protected override getPassengerCount(): number {
+    return 200;
+  }
 
-//   protected override getFuelExpenditure(): number {
-//     return 100;
-//   }
+  protected override getFuelExpenditure(): number {
+    return 100;
+  }
 
-//   protected override getMaxAltitude(): number {
-//     return 25000;
-//   }
-// }
+  protected override getMaxAltitude(): number {
+    return 25000;
+  }
+}
 
-// export class DreamLiner extends AirPlane {
-//   public getCruisingAltitude(): number {
-//     return this.getMaxAltitude() - this.getFuelExpenditure();
-//   }
+export class DreamLiner extends AirPlane {
+  public getCruisingAltitude(): number {
+    return this.getMaxAltitude() - this.getFuelExpenditure();
+  }
 
-//   protected override getPassengerCount(): number {
-//     return 250;
-//   }
+  protected override getPassengerCount(): number {
+    return 250;
+  }
 
-//   protected override getFuelExpenditure(): number {
-//     return 200;
-//   }
+  protected override getFuelExpenditure(): number {
+    return 200;
+  }
 
-//   protected override getMaxAltitude(): number {
-//     return 30000;
-//   }
-// }
+  protected override getMaxAltitude(): number {
+    return 30000;
+  }
+}
 
-// export class AirPlaneFactory {
-//   public static create(type: AirPlaneType): AirPlane {
-//     switch (type) {
-//       case AirPlaneType.Boeing777:
-//         return new Boeing777();
-//       case AirPlaneType.AirForceOne:
-//         return new AirForceOne();
-//       case AirPlaneType.DreamLiner:
-//         return new DreamLiner();
-//       default:
-//         throw new Error('Unknown airplane type.');
-//     }
-//   }
-// }
+export class AirPlaneFactory {
+  public static create(type: AirPlaneType): AirPlane {
+    switch (type) {
+      case AirPlaneType.Boeing777:
+        return new Boeing777();
+      case AirPlaneType.AirForceOne:
+        return new AirForceOne();
+      case AirPlaneType.DreamLiner:
+        return new DreamLiner();
+      default:
+        throw new Error('Unknown airplane type.');
+    }
+  }
+}
 
-// export class GoodAltitudeCalculator {
-//   public static calculate(type: AirPlaneType): number {
-//     const airPlane: AirPlane = AirPlaneFactory.create(type);
-//     return airPlane.getCruisingAltitude();
-//   }
-// }
+export class GoodAltitudeCalculator {
+  public static calculate(type: AirPlaneType): number {
+    const airPlane: AirPlane = AirPlaneFactory.create(type);
+    return airPlane.getCruisingAltitude();
+  }
+}
 
-// // Użycie
-// const altitude = GoodAltitudeCalculator.calculate(AirPlaneType.Boeing777);
-// console.log(altitude);
+// Użycie
+const altitude = GoodAltitudeCalculator.calculate(AirPlaneType.Boeing777);
+console.log(altitude);
