@@ -1,5 +1,4 @@
-// Nie używaj ani magicznych liczb
-// ani magicznych stringów (magic strings and magic numbers)
+// Nie używaj magicznych stringów (magic strings)
 
 export class ProjectorWithMagicStrings {
   public configureIf(genre: string): void {

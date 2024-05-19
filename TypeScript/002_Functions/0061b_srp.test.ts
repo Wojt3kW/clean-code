@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import { GoodSimpleFunctions, BadComplexFunction, Client } from './006a_srp';
+import { GoodSimpleFunctions, BadComplexFunction, Client } from './0061a_srp';
 
 describe('tests of GoodSimpleFunctions class', () => {
   let goodFunctions: GoodSimpleFunctions;

@@ -1,30 +1,46 @@
-// Nazywaj funkcje zgodnie z ich przeznaczeniem
+import '../002_Functions/date.extensions';
 
-export class BadNames {
+// Nazywaj funkcje zgodnie z ich przeznaczeniem
+export class BadFunctionName {
   public constructor() {
     const date = new Date();
 
     // Trudno jest powiedzieć, na podstawie nazwy funkcji, co jest dodawane do daty
     const newDate = this.addToDate(date, 1);
-    console.log(newDate);
+    console.log('BadFunctionName, date:', date, 'new date:', newDate);
   }
 
-  private addToDate(date: Date, month: number): Date {
-    return new Date(date.setMonth(date.getMonth() + month));
+  private addToDate(date: Date, valueToAdd: number): Date {
+    return new Date(new Date(date).setMonth(date.getMonth() + valueToAdd));
   }
 }
 
-export class GoodNames {
+const badFunctionName = new BadFunctionName();
+
+export class BetterFunctionName {
   public constructor() {
     const date = new Date();
 
-    // Nazwa funkcji jasno określa, co jest dodawane i do daty
-    // Dodaje miesiąc do daty
+    // Nazwa funkcji jasno określa, co jest dodawane do daty, dodaje miesiąc do daty
     const newDate = this.addMonthToDate(date, 1);
-    console.log(newDate);
+    console.log('BetterFunctionName, date:', date, 'new date:', newDate);
   }
 
-  private addMonthToDate(date: Date, month: number): Date {
-    return new Date(date.setMonth(date.getMonth() + month));
+  private addMonthToDate(date: Date, months: number): Date {
+    return new Date(new Date(date).setMonth(date.getMonth() + months));
   }
 }
+
+const betterFunctionName = new BetterFunctionName();
+
+export class ExtensionsMethod {
+  public constructor() {
+    const date = new Date();
+
+    // Rozszerzenie klasy Date o metodę addMonth
+    const newDate = date.addMonths(1);
+    console.log('ExtensionsMethod, date:', date, 'new date:', newDate);
+  }
+}
+
+const classWithExtensions = new ExtensionsMethod();

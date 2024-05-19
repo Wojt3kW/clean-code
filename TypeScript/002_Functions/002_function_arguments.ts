@@ -15,11 +15,11 @@ interface IMenuItemOptions {
   fontColor: string,
   backgroundColor: string,
   fontSize?: string,
-  icon: string,
+  icon?: string,
   iconColor?: string,
   iconBackgroundColor?: string,
   iconSize?: string,
-  enabled: boolean,
+  enabled?: boolean,
   onClick?: () => void,
 }
 

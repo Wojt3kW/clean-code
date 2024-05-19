@@ -1,5 +1,4 @@
-// Nie używaj ani magicznych liczb
-// ani magicznych stringów (magic strings and magic numbers)
+// Nie używaj magicznych liczb (magic numbers)
 
 export class RestartWithMagicNumbers {
   public restart(): void {

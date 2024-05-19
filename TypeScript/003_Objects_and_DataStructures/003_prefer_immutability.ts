@@ -2,27 +2,27 @@
 // niezmienialny obiekt to taki, który raz zainicjalizowany nie zmieni swojego stanu
 
 interface IDbConfigMutable {
-  host: string;
-  port: string;
-  db: string;
+  hostName: string;
+  portNumber: number;
+  dbName: string;
 }
 
 class DbConfigMutable implements IDbConfigMutable {
-  host: string;
-  port: string;
-  db: string;
+  hostName: string;
+  portNumber: number;
+  dbName: string;
 
-  constructor(host: string, port: string, db: string) {
-    this.host = host;
-    this.port = port;
-    this.db = db;
+  constructor(host: string, port: number, db: string) {
+    this.hostName = host;
+    this.portNumber = port;
+    this.dbName = db;
   }
 }
 
 export class MutableExample {
   public getConfig(): DbConfigMutable {
-    const config = new DbConfigMutable('localhost', '3306', 'myDb');
-    config.db = 'otherDb';
+    const config = new DbConfigMutable('localhost', 3306, 'myDb');
+    config.dbName = 'otherDb';
     return config;
   }
 
@@ -42,22 +42,22 @@ export class MutableExample {
 }
 
 interface IDbConfigImmutable {
-  readonly host: string;
-  readonly port: string;
-  readonly db: string;
+  readonly hostName: string;
+  readonly portNumber: number;
+  readonly dbName: string;
 }
 
 class DbConfigImmutable implements IDbConfigImmutable {
   constructor(
-    public readonly host: string,
-    public readonly port: string,
-    public readonly db: string
+    public readonly hostName: string,
+    public readonly portNumber: number,
+    public readonly dbName: string
   ) {}
 }
 
 export abstract class ImmutableExample {
   public getConfig(): DbConfigImmutable {
-    const config = new DbConfigImmutable('localhost', '3306', 'myDb');
+    const config = new DbConfigImmutable('localhost', 3306, 'myDb');
     // config.db = 'otherDb'; // error - Cannot assign to 'db' because it is a read-only property
     return config;
   }

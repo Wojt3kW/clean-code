@@ -1,39 +1,39 @@
 // Nie używaj flag jako parametru funkcji
 
 class FileStorage {
-  public create(name: string): void {
-    // ...
+  public createEmptyFile(filePath: string): void {
+    console.log(`Creating empty file: ${filePath}`);
   }
 }
 
 export class BadFunctionsWithFlags {
-  private readonly fileStorage: FileStorage;
+  private readonly _fileStorage: FileStorage;
 
   public constructor() {
-    this.fileStorage = new FileStorage();
+    this._fileStorage = new FileStorage();
   }
 
-  public createFile(name: string, useTemp: boolean): void {
+  public createFile(fileName: string, useTemp: boolean): void {
     if (useTemp) {
-      this.fileStorage.create(`./temp/${name}`);
+      this._fileStorage.createEmptyFile(`./temp/${fileName}`);
     } else {
-      this.fileStorage.create(name);
+      this._fileStorage.createEmptyFile(`./${fileName}`);
     }
   }
 }
 
 export class GoodFunctionsWithoutFlags {
-  private readonly fileStorage: FileStorage;
+  private readonly _fileStorage: FileStorage;
 
   public constructor() {
-    this.fileStorage = new FileStorage();
+    this._fileStorage = new FileStorage();
   }
 
-  public createFile(name: string): void {
-    this.fileStorage.create(name);
+  public createFile(fileName: string): void {
+    this._fileStorage.createEmptyFile(`./${fileName}`);
   }
 
-  public createTempFile(name: string): void {
-    this.fileStorage.create(`./temp/${name}`);
+  public createTempFile(fileName: string): void {
+    this._fileStorage.createEmptyFile(`./temp/${fileName}`);
   }
 }

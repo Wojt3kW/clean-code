@@ -1,28 +1,29 @@
+/* eslint-disable no-magic-numbers */
 // Unikaj tzw. efektu ubocznego działania funkcji
 // Funkcja powinna zwracać wartość, a nie zmieniać wartości zmiennych poza swoim zakresem
 
 export class BadFunctionWithSideEffect {
-  private name: string = 'Side effect';
+  private _name: string = 'Side effect';
 
   constructor() {
     this.toBase64();
     // od tej pory 'name' będzie miało nową wartość
 
-    console.log(this.name); // 'Side effect' <-> 'U2lkZSBlZmZlY3Q='
+    console.log(this._name); // 'Side effect' <-> 'U2lkZSBlZmZlY3Q='
   }
 
   private toBase64(): void {
-    this.name = btoa(this.name);
+    this._name = btoa(this._name);
   }
 }
 
 export class GoodFunctionWithoutSideEffect {
-  private readonly name: string = 'Side effect';
+  private readonly _name: string = 'Side effect';
 
   constructor() {
-    const encodedName = this.toBase64(this.name);
+    const encodedName = this.toBase64(this._name);
     console.log(encodedName);
-    console.log(this.name);
+    console.log(this._name);
   }
 
   private toBase64(text: string): string {
@@ -38,6 +39,11 @@ export class PureFunction {
   }
 }
 
+const pureFunction = new PureFunction();
+console.log('PureFunction, 1+2=', pureFunction.add(1, 2)); // 3
+console.log('PureFunction, 1+2=', pureFunction.add(1, 2)); // 3
+console.log('PureFunction, 1+2=', pureFunction.add(1, 2)); // 3
+
 // Impure function
 // Funkcja, która zwraca różne wartości dla tych samych argumentów
 export class ImpureFunction {
@@ -47,3 +53,8 @@ export class ImpureFunction {
     return this._result++ + a + b;
   }
 }
+
+const impureFunction = new ImpureFunction();
+console.log('ImpureFunction, 1+2=', impureFunction.add(1, 2)); // 3
+console.log('ImpureFunction, 1+2=', impureFunction.add(1, 2)); // 4
+console.log('ImpureFunction, 1+2=', impureFunction.add(1, 2)); // 5

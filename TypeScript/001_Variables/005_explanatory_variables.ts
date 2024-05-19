@@ -1,4 +1,5 @@
 import * as fs from 'fs'
+
 // Używaj zmiennych jasno określających ich przeznaczenie
 
 // Przykład zmiennych z niejasnym przeznaczeniem

@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 // Przedkładaj programowanie funkcyjne nad programowanie imperatywne
 
 abstract class FunctionalStyleOverImperativeStyle {
@@ -24,22 +25,29 @@ export class ImperativeStyle extends FunctionalStyleOverImperativeStyle {
 
   public getOddNumbers(): number[] {
     const oddNumbers = [];
+
     for (let i = 0; i < this.numbers.length; i++) {
       if (this.numbers[i] % 2 !== 0) {
         oddNumbers.push(this.numbers[i]);
       }
     }
+
     return oddNumbers;
   }
 
   public select8(): number | null {
     let selected = null;
+
     for (let i = 0; i < this.numbers.length; i++) {
-      if (this.numbers[i] > 5 && this.numbers[i] % 2 === 0 && this.numbers[i] < 9 && this.numbers[i] * 2 > 15) {
+      if (this.numbers[i] > 5 &&
+        this.numbers[i] % 2 === 0 &&
+        this.numbers[i] < 9 &&
+        this.numbers[i] * 2 > 15) {
         selected = this.numbers[i];
         break;
       }
     }
+
     return selected;
   }
 }

@@ -1,21 +1,21 @@
 // Zmienna zadeklarowana jako globalna
 const users = ['Tom', 'Jerry'];
 
-export function someFunctionUsingGlobalVariables(): void {
+export function functionUsingGlobalVariables(): void {
   for (const user of users) {
     console.log(user);
   }
 }
 
 // Zmienna zadeklarowana w miejscu użycia
-export function someFunctionUsingLocalVariables(): void {
+export function functionUsingLocalVariables(): void {
   const users = ['Tom', 'Jerry'];
   for (const user of users) {
     console.log(user);
   }
 }
 
-export function someFunctionWithUnnecessaryAssignmentOfVariables(): void {
+export function functionWithUnnecessaryAssignmentOfVariable(): void {
   let name: string = '';
 
   if (Math.random() === 1) {
@@ -27,7 +27,7 @@ export function someFunctionWithUnnecessaryAssignmentOfVariables(): void {
   console.log(name);
 }
 
-export function someFunctionWithVariablesDeclaredAtTheBeginning(): void {
+export function functionWithVariablesDeclaredAtTheBeginning(): void {
   const readFile = (_path: string): string[] => {
     return ['Name: John', 'Name: Jane', 'Name: Tom', 'Name: Jerry'];
   }
