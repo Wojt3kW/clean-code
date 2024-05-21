@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 // hermetyzacja, inaczej również enkapsulacja,
 // polega na ukrywaniu pewnych danych wewnątrz klasy,
 // tak aby nie były one dostępne z zewnątrz

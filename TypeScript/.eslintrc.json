@@ -40,12 +40,12 @@
       },
       {
         "selector": ["enum", "enumMember"],
-        "format": ["UPPER_CASE"]
+        "format": ["PascalCase"]
       },
       {
         "selector": ["memberLike", "variableLike"],
         "modifiers": ["const", "exported", "readonly"],
-        "format": ["UPPER_CASE"]
+        "format": ["PascalCase"]
       },
       {
         "selector": ["parameter", "method", "function"],
@@ -115,6 +115,8 @@
         "ignoreRestSiblings": false
       }
     ],
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "@typescript-eslint/explicit-function-return-type": "error",
+    "@typescript-eslint/explicit-member-accessibility": "error"
   }
 }

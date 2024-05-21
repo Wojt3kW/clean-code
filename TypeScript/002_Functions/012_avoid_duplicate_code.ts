@@ -75,7 +75,10 @@ abstract class BaseRenderer {
     getDevelopers: () => Developer[];
     getManagers: () => Manager[];
     getEmployees: () => Array<Developer | Manager>;
-  } = {
+  };
+
+  protected constructor() {
+    this.database = {
       getDevelopers: () => [
         new Developer(1, 'John Smith', new Date('2010-10-10'), 'https://github.com/JohnSmith'),
         new Developer(2, 'Fred Bloggs', new Date('2015-05-05'), 'https://github.com/FredBloggs'),
@@ -90,6 +93,7 @@ abstract class BaseRenderer {
         return [...developers, ...managers];
       },
     };
+  }
 
   protected render(data: any): void {
     console.log(data);

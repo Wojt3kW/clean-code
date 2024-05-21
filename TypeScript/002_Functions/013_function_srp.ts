@@ -1,7 +1,11 @@
+/* eslint-disable no-magic-numbers */
+
 // Funkcje powinny robić jedną konkretną rzecz/czynność/operację
 // KISS - Keep It Simple Stupid,
 // SRP - Single Responsibility Principle
 
+// To mógłby być DTO (Data Transfer Object)
+// DTO vs TEntity
 export interface IClient {
   id: number;
   name: string;
@@ -11,7 +15,9 @@ export class Client implements IClient {
   public readonly id: number;
   public readonly name: string;
   public readonly email: string;
+
   public readonly isLockedOut: boolean;
+  // public readonly expirationDate: Date;
 
   public constructor(id: number, name: string, email: string, isLockedOut: boolean) {
     this.id = id;
@@ -27,13 +33,13 @@ export class Client implements IClient {
 abstract class BaseClass {
   protected readonly database: {
     getClient: (clientId: number) => Client;
-    getAllClients: () => Client[];
+    getClients: (clientIds: number[]) => Client[];
   };
 
   public constructor() {
     this.database = {
       getClient: (clientId: number): Client => {
-        const clientRecord = this.database.getAllClients().find(c => c.id === clientId);
+        const clientRecord = this.database.getClients([clientId])[0];
 
         if (clientRecord === undefined) {
           throw new Error('Client not found');
@@ -41,11 +47,12 @@ abstract class BaseClass {
 
         return clientRecord;
       },
-      getAllClients: (): Client[] => {
+      getClients: (clientIds: number[]): Client[] => {
         return [
           new Client(1, 'Client 1', 'client1@email1.com', true),
           new Client(2, 'Client 2', 'client1@email2.com', true),
-          new Client(3, 'Client 3', 'client1@email3.com', true)];
+          new Client(3, 'Client 3', 'client1@email3.com', true)]
+          .filter(client => clientIds.includes(client.id));
       },
     };
   }
@@ -54,7 +61,7 @@ abstract class BaseClass {
     // send email to client
   }
 
-  protected abstract emailActiveClients(clients: Client[]): void;
+  public abstract emailActiveClients(clients: Client[]): void;
 }
 
 export class BadComplexFunction extends BaseClass {
@@ -79,9 +86,8 @@ export class GoodSimpleFunctions extends BaseClass {
 
   private getActiveClients(clients: IClient[]): IClient[] {
     return this.database
-      .getAllClients()
-      .filter(client => this.isActiveClient(client) &&
-                        clients.some(c => c.id === client.id));
+      .getClients(clients.map(client => client.id))
+      .filter(client => this.isActiveClient(client));
   }
 
   private isActiveClient(client: Client): boolean {

@@ -32,38 +32,38 @@ export class ProjectorWithMagicStrings {
 }
 
 // Użycie stałych jako "magicznych stringów"
-const MOVIE_GENRE = {
-  ROMANTIC: 'romantic',
-  DRAMA: 'drama',
+const MovieGenre = {
+  romantic: 'romantic',
+  drama: 'drama',
   COMEDY: 'comedy',
   DOCUMENTARY: 'documentary',
 };
 
 export class ProjectorWithMagicConstants {
   public configureIf(genre: string): void {
-    if (genre === MOVIE_GENRE.ROMANTIC) {
+    if (genre === MovieGenre.romantic) {
       // ustaw jasność projektora na niską, głośność na cichą
-    } else if (genre === MOVIE_GENRE.DRAMA) {
+    } else if (genre === MovieGenre.drama) {
       // ustawić jasność projektora na średnią, głośność na średnią
-    } else if (genre === MOVIE_GENRE.COMEDY) {
+    } else if (genre === MovieGenre.COMEDY) {
       // ustawić jasność projektora na wysoką, głośność na wysoką
-    } else if (genre === MOVIE_GENRE.DOCUMENTARY) {
+    } else if (genre === MovieGenre.DOCUMENTARY) {
       // ustawić jasność projektor na bardzo wysoką, głośność na bardzo wysoką
     }
   }
 
   public configureSwitch(genre: string): void {
     switch (genre) {
-      case MOVIE_GENRE.ROMANTIC:
+      case MovieGenre.romantic:
         // ustaw jasność projektora na niską, głośność na cichą
         break;
-      case MOVIE_GENRE.DRAMA:
+      case MovieGenre.drama:
         // ustawić jasność projektora na średnią, głośność na średnią
         break;
-      case MOVIE_GENRE.COMEDY:
+      case MovieGenre.COMEDY:
         // ustawić jasność projektora na wysoką, głośność na wysoką
         break;
-      case MOVIE_GENRE.DOCUMENTARY:
+      case MovieGenre.DOCUMENTARY:
         // ustawić jasność projektor na bardzo wysoką, głośność na bardzo wysoką
         break;
     }

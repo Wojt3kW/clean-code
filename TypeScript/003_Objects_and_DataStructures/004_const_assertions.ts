@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 // Nie dodawaj niepotrzebnego kontekstu
 
 export class NotConstantValues {

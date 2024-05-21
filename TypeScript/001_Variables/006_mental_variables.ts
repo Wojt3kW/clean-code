@@ -6,9 +6,9 @@ interface IUser {
   email: string;
 }
 
-enum SUBSCRIPTION_TYPE {
-  FREE,
-  PREMIUM,
+enum SubscriptionType {
+  Free,
+  Premium,
 }
 
 interface IPayment {
@@ -25,11 +25,11 @@ export abstract class BaseClass {
     } satisfies IUser;
   }
 
-  protected getSubscription(): SUBSCRIPTION_TYPE {
-    return SUBSCRIPTION_TYPE.PREMIUM;
+  protected getSubscription(): SubscriptionType {
+    return SubscriptionType.Premium;
   }
 
-  protected getPayment(user: IUser, subscription: SUBSCRIPTION_TYPE): IPayment {
+  protected getPayment(user: IUser, subscription: SubscriptionType): IPayment {
     return {
       message: `Charging user ${user.name} for ${subscription}.`,
       price: 100,
@@ -55,7 +55,7 @@ export class ClassWithExplanatoryNames extends BaseClass {
     super();
 
     const user: IUser = this.getUser();
-    const subscription: SUBSCRIPTION_TYPE = this.getSubscription();
+    const subscription: SubscriptionType = this.getSubscription();
     const payment: IPayment = this.getPayment(user, subscription);
     console.log(payment);
   }

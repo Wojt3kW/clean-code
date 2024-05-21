@@ -1,5 +1,8 @@
+/* eslint-disable @typescript-eslint/no-extraneous-class */
+
 // Warunki trzymaj w osobnych funkcjach, które będą zwracać wartość logiczną.
 // Dzięki temu kod będzie bardziej czytelny i łatwiejszy do zrozumienia.
+
 class Subscription {
   public isTrial: boolean;
 }
@@ -10,8 +13,8 @@ class Account {
 
 export abstract class ServiceActivatorWithConditionals {
   public constructor(
-    readonly subscription: Subscription,
-    readonly account: Account,
+    subscription: Subscription,
+    account: Account,
   ) {
     if (subscription.isTrial || account.balance > 0) {
       // ...
@@ -21,8 +24,8 @@ export abstract class ServiceActivatorWithConditionals {
 
 export abstract class ServiceActivatorWithEncapsulatedConditionals {
   public constructor(
-    readonly subscription: Subscription,
-    readonly account: Account,
+    subscription: Subscription,
+    account: Account,
   ) {
     if (this.canActivate(subscription, account)) {
       // ...
@@ -35,7 +38,7 @@ export abstract class ServiceActivatorWithEncapsulatedConditionals {
 }
 
 class User {
-  private readonly _roles: string[] = [];
+  private readonly _roles: string[] = ['admin'];
 
   public hasRole(role: string): boolean {
     return this._roles.includes(role);

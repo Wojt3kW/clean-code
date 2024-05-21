@@ -1,5 +1,5 @@
 /* eslint-disable no-magic-numbers */
-import { GoodSimpleFunctions, BadComplexFunction, Client } from './0061a_srp';
+import { GoodSimpleFunctions, BadComplexFunction, Client } from './013_function_srp';
 
 describe('tests of GoodSimpleFunctions class', () => {
   let goodFunctions: GoodSimpleFunctions;
@@ -17,8 +17,8 @@ describe('tests of GoodSimpleFunctions class', () => {
         new Client(3, 'Client 3', 'client1@email3.com', false),
       ];
 
-      jest.spyOn((goodFunctions as any).database, 'getAllClients').mockImplementation((): Client[] => {
-        return clients;
+      jest.spyOn((goodFunctions as any).database, 'getClients').mockImplementation((clientIds: number[]): Client[] => {
+        return clients.filter(client => clientIds.includes(client.id));
       });
 
       const emailSpy = jest.spyOn(goodFunctions, 'sendEmail' as keyof GoodSimpleFunctions);
@@ -38,7 +38,7 @@ describe('tests of GoodSimpleFunctions class', () => {
       // Arrange
       const client = new Client(1, 'Client 1', 'client1@email1.com', false);
 
-      jest.spyOn((goodFunctions as any).database, 'getAllClients').mockImplementation((): Client[] => {
+      jest.spyOn((goodFunctions as any).database, 'getClients').mockImplementation((clientIds: number[]): Client[] => {
         return [client];
       });
 
@@ -53,7 +53,7 @@ describe('tests of GoodSimpleFunctions class', () => {
       // Arrange
       const client = new Client(1, 'Client 1', 'client1@email1.com', true);
 
-      jest.spyOn((goodFunctions as any).database, 'getAllClients').mockImplementation((): Client[] => {
+      jest.spyOn((goodFunctions as any).database, 'getClients').mockImplementation((clientIds: number[]): Client[] => {
         return [client];
       });
 
@@ -82,8 +82,8 @@ describe('tests of BadComplexFunction class', () => {
         new Client(3, 'Client 3', 'client1@email1.com', false),
       ];
 
-      jest.spyOn((badFunction as any).database, 'getAllClients').mockImplementation((): Client[] => {
-        return clients;
+      jest.spyOn((badFunction as any).database, 'getClients').mockImplementation((clientIds: number[]): Client[] => {
+        return clients.filter(client => clientIds.includes(client.id));
       });
 
       const emailSpy = jest.spyOn(badFunction, 'sendEmail' as keyof BadComplexFunction);

@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 // niezmienność, niezmienialności, niemutowalności (immutability) obiektów
 // niezmienialny obiekt to taki, który raz zainicjalizowany nie zmieni swojego stanu
 

@@ -9,12 +9,12 @@ export class RestartWithMagicNumbers {
 }
 
 export class RestartWithoutMagicNumbers {
-  readonly ONE_DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
+  protected readonly oneDayInMilliseconds = 24 * 60 * 60 * 1000;
 
   public restart(): void {
     setTimeout(() => {
       console.log('Restarting...');
-    }, this.ONE_DAY_IN_MILLISECONDS);
+    }, this.oneDayInMilliseconds);
   }
 }
 
@@ -42,16 +42,16 @@ export class DiscountCalculatorWithMagicNumbers {
 }
 
 export class DiscountCalculatorWithoutMagicNumbers {
-  readonly DISCOUNT_THRESHOLD = 1000;
-  readonly LARGER_DISCOUNT = 0.9;
-  readonly SMALLER_DISCOUNT = 0.95;
+  protected readonly discountThreshold = 1000;
+  protected readonly largerDiscount = 0.9;
+  protected readonly smallerDiscount = 0.95;
 
   public calculate(price: number): number {
-    if (price > this.DISCOUNT_THRESHOLD) {
-      return price * this.LARGER_DISCOUNT;
+    if (price > this.discountThreshold) {
+      return price * this.largerDiscount;
     }
 
-    return price * this.SMALLER_DISCOUNT;
+    return price * this.smallerDiscount;
   }
 }
 

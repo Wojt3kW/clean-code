@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 import './date.extensions';
 
 // Nazywaj funkcje zgodnie z ich przeznaczeniem
