@@ -1,3 +1,52 @@
+class User {
+  public readonly id: number;
+}
+
+class Transaction {
+  public readonly id: number;
+  public readonly userId: number;
+}
+
+class Database {
+  public users: {
+    findOne: (where: Record<string, any>) => Promise<User>;
+  };
+
+  public transactions: {
+    findMany: (where: Record<string, any>) => Promise<Transaction[]>;
+  };
+}
+
+interface IRepository<T> {
+  findOne: (where: Record<string, any>) => Promise<T>;
+  findMamy: (where: Record<string, any>) => Promise<T[]>;
+  create: (item: T) => Promise<T>;
+  update: (id: number, item: T) => Promise<T>;
+  delete: (id: number) => Promise<void>;
+}
+
+interface IUserRepository extends IRepository<User> {
+}
+
+interface ITransactionRepository extends IRepository<Transaction> {
+}
+
+interface IEmailSender {
+  send: (message: string) => Promise<void>;
+}
+
+class EmailSender implements IEmailSender {
+  public send: (message: string) => Promise<void>;
+}
+
+interface INotificationSender {
+  push: (content: string) => Promise<void>;
+}
+
+class NotificationSender implements INotificationSender {
+  public push: (content: string) => Promise<void>;
+}
+
 // Wysoka spójność (high cohesion) i niska zależność (low coupling)
 
 // Kohezja (spójność) określa jak bardzo elementy pojedynczej klasy "pasują do siebie".
@@ -8,29 +57,6 @@
 
 // Kod, który jest łatwy w utrzymaniu i odporny na zmiany,
 // charakteryzuje się tym, że klasy są niezależne i słabo powiązane ze sobą
-
-class User {
-  public readonly id: number;
-}
-class Transaction {
-  public readonly id: number;
-  public readonly userId: number;
-}
-class Database {
-  public users: {
-    findOne: ({ id }: { id: number }) => Promise<User>;
-  };
-
-  public transactions: {
-    find: ({ userId }: { userId: number }) => Promise<Transaction[]>;
-  };
-}
-class EmailSender {
-  public send: (message: string) => Promise<void>;
-}
-class NewsletterSender {
-  public send: (content: string) => Promise<void>;
-}
 
 /*
  Przykład klasy z niską spójnością i dużymi zależnościami
@@ -43,7 +69,7 @@ export class UserServiceHighCoupling {
   public constructor(
     private readonly _db: Database,
     private readonly _emailSender: EmailSender,
-    private readonly _newsletterSender: NewsletterSender) {
+    private readonly _notificationSender: NotificationSender) {
   }
 
   public async getUser(id: number): Promise<User> {
@@ -51,69 +77,70 @@ export class UserServiceHighCoupling {
   }
 
   public async getTransactions(userId: number): Promise<Transaction[]> {
-    return await this._db.transactions.find({ userId });
+    return await this._db.transactions.findMany({ userId });
   }
 
   public async sendGreeting(): Promise<void> {
     await this._emailSender.send('Welcome!');
   }
 
-  public async sendNotification(text: string): Promise<void> {
-    await this._emailSender.send(text);
-  }
-
   public async sendNewsletter(): Promise<void> {
     const newsletterContent = 'Newsletter';
-    await this._newsletterSender.send(newsletterContent);
+    await this._emailSender.send(newsletterContent);
+  }
+
+  public async sendNotification(text: string): Promise<void> {
+    await this._notificationSender.push(text);
   }
 }
 
 /*
  Przykład klas z wysoką spójnością i niskimi zależnościami
  Każda klasa ma jedną odpowiedzialność
+ Każda klasa jest niezależna od innych klas, są niezależne od konkretnych implementacji
  Klasa jest łatwa w utrzymaniu i odporna na zmiany
 */
 export class UserService {
   public constructor(
-    private readonly _db: Database) {
+    private readonly _repository: IUserRepository) {
   }
 
-  public async getUser(id: number): Promise<User> {
-    return await this._db.users.findOne({ id });
+  public async get(id: number): Promise<User> {
+    return await this._repository.findOne({ id });
   }
 }
 
 export class TransactionService {
   public constructor(
-    private readonly _db: Database) {
+    private readonly _repository: ITransactionRepository) {
   }
 
-  public async getTransactions(userId: number): Promise<Transaction[]> {
-    return await this._db.transactions.find({ userId });
+  public async get(userId: number): Promise<Transaction[]> {
+    return await this._repository.findMamy({ userId });
   }
 }
 
 export class EmailService {
   public constructor(
-    private readonly _emailSender: EmailSender) {
+    private readonly _emailSender: IEmailSender) {
   }
 
   public async sendGreeting(): Promise<void> {
     await this._emailSender.send('Welcome!');
   }
 
-  public async sendNotification(text: string): Promise<void> {
-    await this._emailSender.send(text);
+  public async sendNewsletter(): Promise<void> {
+    const newsletterContent = 'Newsletter';
+    await this._emailSender.send(newsletterContent);
   }
 }
 
-export class NewsletterService {
+export class NotificationService {
   public constructor(
-    private readonly _newsletterSender: NewsletterSender) {
+    private readonly _notificationSender: INotificationSender) {
   }
 
-  public async send(): Promise<void> {
-    const newsletterContent = 'Newsletter';
-    await this._newsletterSender.send(newsletterContent);
+  public async sendNotification(text: string): Promise<void> {
+    await this._notificationSender.push(text);
   }
 }

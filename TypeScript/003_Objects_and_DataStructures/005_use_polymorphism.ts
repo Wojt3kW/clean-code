@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable @typescript-eslint/naming-convention */
+
 // Używaj polimorfizmu zamiast instrukcji warunkowych if, switch-y, itp.
 // Używaj polimorfizmu, aby zastąpić instrukcje warunkowe if, switch-e, itp., które zależą od typu obiektu.
 // cztery filary programowania obiektowego: abstrakcja, polimorfizm, dziedziczenie, hermetyzacja
@@ -63,6 +64,7 @@ const badAltitudeCalculator = new BadAltitudeCalculator();
 const bestAltitude = badAltitudeCalculator.getCruisingAltitude(AirPlaneType.Boeing777);
 console.log(bestAltitude);
 
+// Przykład zastosowania polimorfizmu
 abstract class AirPlane {
   public abstract getCruisingAltitude(): number;
 
