@@ -1,5 +1,6 @@
 /* eslint-disable no-magic-numbers */
 
+// staraj się używać obiektów, których stan nie zmienia się po ich utworzeniu
 // niezmienność, niezmienialności, niemutowalności (immutability) obiektów
 // niezmienialny obiekt to taki, który raz zainicjalizowany nie zmieni swojego stanu
 
@@ -28,7 +29,7 @@ export class MutableExample {
     return config;
   }
 
-  public mutableArray(): void {
+  public setArray(): void {
     let array = [1, 2, 3];
     array.push(4);
     array = [];
@@ -37,7 +38,7 @@ export class MutableExample {
     console.log(array);
   }
 
-  public mutableArguments(args: string[]): void {
+  public setArguments(args: string[]): void {
     args.push('new element');
     args = [];
   }
@@ -64,14 +65,14 @@ export abstract class ImmutableExample {
     return config;
   }
 
-  public immutableArray(): void {
+  public setArray(): void {
     const array: readonly number[] = [1, 2, 3];
     // array = []; // error - Cannot assign to 'array' because it is a read-only property
     // array.push(100); // error - Property 'push' does not exist on type 'readonly number[]'
     console.log(array);
   }
 
-  public immutableArguments(args: readonly string[]): void {
+  public setArguments(args: readonly string[]): void {
     // args.push('new element'); // error - Property 'push' does not exist on type 'readonly string[]'
     // args = []; // error - Cannot assign to 'args' because it is a read-only property
   }

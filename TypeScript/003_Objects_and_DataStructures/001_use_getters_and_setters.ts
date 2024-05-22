@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 // Używaj getterów i setterów dla dostępu do danych obiektu
 // zamiast bezpośredniego dostępu do właściwości obiektu
 interface IPerson {
@@ -6,22 +8,22 @@ interface IPerson {
   lastName: string;
 }
 
-class PersonNoGetSet implements IPerson {
+class PersonWithFields implements IPerson {
   public age: number;
   public firstName: string;
   public lastName: string;
 }
 
 export class ClassWithoutGetterAndSetter {
-  public person: PersonNoGetSet;
+  public person: PersonWithFields;
 
   public constructor() {
-    this.person = new PersonNoGetSet();
+    this.person = new PersonWithFields();
     this.person.age = -100;
   }
 }
 
-class Person implements IPerson {
+class PersonWithProperties implements IPerson {
   private _age: number;
   private _firstName: string;
   private _lastName: string;
@@ -74,12 +76,12 @@ class Person implements IPerson {
 }
 
 export class ClassWitGetterAndSetter {
-  private _person: Person | null = null;
+  private _person: PersonWithProperties | null = null;
 
   // lazy initialization
-  public get person(): Person {
+  public get person(): PersonWithProperties {
     if (this._person == null) {
-      this._person = new Person();
+      this._person = new PersonWithProperties();
     }
     return this._person;
   }

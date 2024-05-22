@@ -1,6 +1,8 @@
 /* eslint-disable no-magic-numbers */
 
-// Nie dodawaj niepotrzebnego kontekstu
+// staraj się używać obiektów, których stan nie zmienia się po ich utworzeniu
+// niezmienność, niezmienialności, niemutowalności (immutability) obiektów
+// niezmienialny obiekt to taki, który raz zainicjalizowany nie zmieni swojego stanu
 
 export class NotConstantValues {
   public notConstantObject(): void {
@@ -19,7 +21,7 @@ export class NotConstantValues {
     console.log(array);
   }
 
-  public notConstatntResult(): void {
+  public notConstantResult(): void {
     const result = this.getReadonlyData(100);
     result.value = 200; // value is changed
     console.log(result);

@@ -1,4 +1,4 @@
-import { ClassWitGetterAndSetter, ClassWithoutGetterAndSetter } from './001a_use_getters_and_setters';
+import { ClassWitGetterAndSetter, ClassWithoutGetterAndSetter } from './001_use_getters_and_setters';
 
 describe('ClassWitGetterAndSetter', () => {
   let classWithPerson: ClassWitGetterAndSetter | ClassWithoutGetterAndSetter;

@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 /* eslint-disable no-magic-numbers */
 /* eslint-disable @typescript-eslint/naming-convention */
-// cztery filary programowania obiektowego: abstrakcja, polimorfizm, dziedziczenie, hermetyzacja
-// SOLD, czyli Single Responsibility Principle, Open/Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, Dependency Inversion Principle
 // Używaj polimorfizmu zamiast instrukcji warunkowych if, switch-y, itp.
 // Używaj polimorfizmu, aby zastąpić instrukcje warunkowe if, switch-e, itp., które zależą od typu obiektu.
+// cztery filary programowania obiektowego: abstrakcja, polimorfizm, dziedziczenie, hermetyzacja
+// SOLD, czyli Single Responsibility Principle, Open/Closed Principle, Liskov Substitution Principle, Interface Segregation Principle, Dependency Inversion Principle
 
 enum AirPlaneType {
   Boeing777,

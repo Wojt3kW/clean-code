@@ -13,11 +13,15 @@ export class ClassWithoutEncapsulation {
   }
 
   perimeter(): number {
-    return 2 * Math.PI * this.radius;
+    return 2 * this.getPi() * this.radius;
   }
 
   surface(): number {
-    return Math.PI * this.radius * this.radius;
+    return this.getPi() * this.radius * this.radius;
+  }
+
+  getPi(): number {
+    return Math.PI;
   }
 }
 
@@ -29,10 +33,14 @@ export class ClassWithEncapsulation {
   }
 
   public perimeter(): number {
-    return 2 * Math.PI * this._radius;
+    return 2 * this.getPi() * this._radius;
   }
 
   public surface(): number {
-    return Math.PI * this._radius * this._radius;
+    return this.getPi() * this._radius * this._radius;
+  }
+
+  private getPi(): number {
+    return Math.PI;
   }
 }
