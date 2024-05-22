@@ -81,8 +81,8 @@ export class UserRepository {
   }
 }
 
-export function getUserName(user: TUser): string {
-  return user.name;
+export function getUserName(user: TUser): string | undefined {
+  return user?.name;
 }
 
 export function sendEmailToUser(user: TUser): void {

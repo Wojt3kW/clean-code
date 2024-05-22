@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-extraneous-class */
+
 // Deklaracje funkcji i miejsca ich wywołań powinny być blisko siebie
 
 class Employee {
@@ -10,11 +12,11 @@ class EmployeeData {
 }
 class PeerReviews {
 }
-class PerfReviewData {
+class ReviewData {
   public constructor(
-    private readonly peerReviews: PeerReviews[],
-    private readonly managerReview: ManagerData,
-    private readonly selfReview: EmployeeData) {
+    private readonly _peerReviews: PeerReviews[],
+    private readonly _managerReview: ManagerData,
+    private readonly _selfReview: EmployeeData) {
   }
 }
 abstract class Review {
@@ -31,19 +33,19 @@ export class BadPerformanceReview extends Review {
     super(employee);
   }
 
-  public getPerfReview(): PerfReviewData {
+  public getReviewData(): ReviewData {
     const peerReviews = this.getPeerReviews();
     const managerReview = this.getManagerReview();
     const selfReview = this.getSelfReview();
-    return new PerfReviewData(peerReviews, managerReview, selfReview);
+    return new ReviewData(peerReviews, managerReview, selfReview);
   }
 
   private getPeers(): PeersData[] {
-    return this.db.lookup(this.employee, 'peers');
+    return this.db.find(this.employee, 'peers');
   }
 
   private getManager(): ManagerData {
-    return this.db.lookup(this.employee, 'manager');
+    return this.db.find(this.employee, 'manager');
   }
 
   private getPeerReviews(): PeerReviews[] {
@@ -58,7 +60,6 @@ export class BadPerformanceReview extends Review {
 
   public getSelfReview(): EmployeeData {
     return {
-
     } satisfies EmployeeData;
   }
 }
@@ -68,34 +69,33 @@ export class PerformanceReview extends Review {
     super(employee);
   }
 
-  public getPerfReview(): PerfReviewData {
+  public getReviewData(): ReviewData {
     const peerReviews = this.getPeerReviews();
     const managerReview = this.getManagerReview();
     const selfReview = this.getSelfReview();
-    return new PerfReviewData(peerReviews, managerReview, selfReview);
+    return new ReviewData(peerReviews, managerReview, selfReview);
   }
 
   private getPeerReviews(): PeerReviews[] {
-    const peers = this.lookupPeers();
+    const peers = this.findPeers();
     return peers;
   }
 
-  private lookupPeers(): PeersData[] {
-    return this.db.lookup(this.employee, 'peers');
+  private findPeers(): PeersData[] {
+    return this.db.find(this.employee, 'peers');
   }
 
   private getManagerReview(): ManagerData {
-    const manager = this.lookupManager();
+    const manager = this.findManager();
     return manager;
   }
 
-  private lookupManager(): ManagerData {
-    return this.db.lookup(this.employee, 'manager');
+  private findManager(): ManagerData {
+    return this.db.find(this.employee, 'manager');
   }
 
   private getSelfReview(): EmployeeData {
     return {
-
     } satisfies EmployeeData;
   }
 }
