@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 
-// Deklaracje funkcji i miejsca ich wywołań powinny być blisko siebie
-
 class Employee {
 }
 class PeersData {
@@ -27,6 +25,8 @@ abstract class Review {
     this.employee = employee;
   }
 }
+
+// Deklaracje funkcji i miejsca ich wywołań powinny być blisko siebie
 
 export class BadPerformanceReview extends Review {
   public constructor(employee: Employee) {
