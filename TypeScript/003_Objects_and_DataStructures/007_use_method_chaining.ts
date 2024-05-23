@@ -28,8 +28,8 @@ class BadQueryBuilder {
 
   public build(): string {
     return `SELECT * FROM [${this._collection}]
-            ORDER BY ${this._orderByFields.join(', ')} 
-            LIMIT ${this._itemsPerPage} 
+            ORDER BY ${this._orderByFields.join(', ')}
+            LIMIT ${this._itemsPerPage}
             OFFSET ${(this._pageNumber - 1) * this._itemsPerPage}`;
   }
 }
@@ -68,8 +68,8 @@ class QueryBuilder {
 
   public build(): string {
     return `SELECT * FROM [${this._collection}]
-            ORDER BY ${this._orderByFields.join(', ')} 
-            LIMIT ${this._itemsPerPage} 
+            ORDER BY ${this._orderByFields.join(', ')}
+            LIMIT ${this._itemsPerPage}
             OFFSET ${(this._pageNumber - 1) * this._itemsPerPage}`;
   }
 }
