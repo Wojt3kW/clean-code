@@ -41,7 +41,6 @@ export class MutableExample {
   public setArguments(args: string[]): void {
     args.push('new element');
     args[0] = 'new value';
-    args = [];
   }
 }
 
@@ -59,7 +58,7 @@ class DbConfigImmutable implements IDbConfigImmutable {
   ) {}
 }
 
-export abstract class ImmutableExample {
+export class ImmutableExample {
   public getConfig(): DbConfigImmutable {
     const config = new DbConfigImmutable('localhost', 3306, 'myDb');
     config.dbName = 'otherDb'; // error - Cannot assign to 'db' because it is a read-only property
@@ -79,3 +78,8 @@ export abstract class ImmutableExample {
     console.log(args);
   }
 }
+
+const immutableExample = new ImmutableExample();
+console.log(immutableExample.getConfig());
+immutableExample.setArray();
+immutableExample.setArguments(['one', 'two', 'three']);
