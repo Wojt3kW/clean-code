@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { between, isBetween } from './001_variable_names';
 import './number.extensions';
 
