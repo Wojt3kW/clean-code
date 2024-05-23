@@ -30,6 +30,7 @@ export abstract class BadClassWithDeadCode {
     };
   }
 
+  // YAGNI - You Aren't Gonna Need It
   private oldRequestModel(url: string): { url: string; contentType: string } {
     return {
       url,
