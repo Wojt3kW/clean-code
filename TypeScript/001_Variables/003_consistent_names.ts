@@ -27,7 +27,7 @@ export abstract class GoodNames {
 
 export enum UserStatus {
   Inactive = 0,
-  Active = 1,
+  Active = 1, // <-- przecinek na końcu 😊
 }
 
 export enum Direction {

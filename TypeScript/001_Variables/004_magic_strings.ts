@@ -75,7 +75,7 @@ export enum GENRE {
   ROMANTIC,
   DRAMA,
   COMEDY,
-  DOCUMENTARY, // <-- przecinek na końcu 😊
+  DOCUMENTARY,
 }
 
 export class ProjectorWithEnum {
