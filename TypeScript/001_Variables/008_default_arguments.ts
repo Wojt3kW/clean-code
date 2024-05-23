@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 // Używaj domyślnych parametrów zamiast warunków czy parametrów opcjonalnych
 
-export abstract class FunctionWithOptionalParameters {
+export abstract class MethodWithOptionalParameters {
   public constructor() {
     this.loadPages();
   }
@@ -13,7 +13,7 @@ export abstract class FunctionWithOptionalParameters {
   }
 }
 
-export abstract class FunctionWithDefaultParameters {
+export abstract class MethodWithDefaultParameters {
   private readonly DEFAULT_PAGES_COUNT = 10;
 
   public constructor() {
