@@ -5,7 +5,7 @@ import * as fs from 'fs';
 // Używaj zmiennych jasno określających ich przeznaczenie
 
 // Przykład zmiennych z niejasnym przeznaczeniem
-const flb = fs.readFileSync('/foo/bar/bills.txt', 'utf8');
+const b = fs.readFileSync('/path/bills.txt', 'utf8');
 const cdt = new Date();
 const cy = cdt.getFullYear();
 const cm = cdt.getMonth();
@@ -14,7 +14,7 @@ const anms = ['dog', 'cat', 'bear', 'wolf', 'lion'];
 const clgs = ['Jack', 'Drake', 'Jill'];
 
 // Przykład zmiennych z nazwami jasno określającymi ich przeznaczenie
-const fileWithBills = fs.readFileSync('/foo/bar/bills.txt', 'utf8');
+const bills = fs.readFileSync('/path/bills.txt', 'utf8');
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
 const currentMonth = currentDate.getMonth();
