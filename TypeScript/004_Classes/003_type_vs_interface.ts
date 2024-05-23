@@ -5,16 +5,32 @@
 
 // Używaj typów gdy potrzebujesz powiązać różne typy za pomocą unii lub skrzyżowania
 // Unia typów pozwala na zadeklarowanie nowego typu, który może być jednym z kilku innych typów
-// Skrzyżowanie typów pozwala zadeklarować nowy typ, który jest połączeniem dwóch innych typów
+// Skrzyżowanie typów pozwala zadeklarować nowy typ, który jest połączeniem kilku innych typów
 
 // Użyj interfejsów do definiowania kształtu obiektów
 
 export function padLeft(value: string, padding: any): string {
-  return Array(padding + 1).join(' ') + value;
+  // narrowing czyli zawężanie typu zmiennej padding number
+  // lub typeof type guards
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(' ') + value;
+  }
+  if (typeof padding === 'string') {
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${typeof padding}'.`);
 }
 
 export function padLeftWithUnion(value: string, padding: string | number): string {
-  return Array(+padding + 1).join(' ') + value;
+  // narrowing czyli zawężanie typu zmiennej padding number
+  // lub typeof type guards
+  if (typeof padding === 'number') {
+    return Array(padding + 1).join(' ') + value;
+  }
+  if (typeof padding === 'string') {
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${typeof padding}'.`);
 }
 
 interface IErrorHandling {
