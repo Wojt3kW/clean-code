@@ -40,6 +40,7 @@ export class MutableExample {
 
   public setArguments(args: string[]): void {
     args.push('new element');
+    args[0] = 'new value';
     args = [];
   }
 }
