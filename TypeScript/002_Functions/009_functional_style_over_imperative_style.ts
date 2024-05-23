@@ -2,8 +2,6 @@
 
 import './array.extensions';
 
-// Przedkładaj programowanie funkcyjne nad programowanie imperatywne
-
 abstract class FunctionalStyleOverImperativeStyle {
   protected readonly numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -11,6 +9,8 @@ abstract class FunctionalStyleOverImperativeStyle {
   public abstract getOddNumbers(): number[];
   public abstract select8(): number | null;
 }
+
+// Przedkładaj programowanie funkcyjne nad programowanie imperatywne
 
 // Imperatywny styl programowania:
 // - opiera się na instrukcjach, które zmieniają stan programu
@@ -43,9 +43,9 @@ export class ImperativeStyle extends FunctionalStyleOverImperativeStyle {
 
     for (let i = 0; i < this.numbers.length; i++) {
       if (this.numbers[i] > 5 &&
-        this.numbers[i] % 2 === 0 &&
-        this.numbers[i] < 9 &&
-        this.numbers[i] * 2 > 15) {
+          this.numbers[i] % 2 === 0 &&
+          this.numbers[i] < 9 &&
+          this.numbers[i] * 2 > 15) {
         selected = this.numbers[i];
         break;
       }
