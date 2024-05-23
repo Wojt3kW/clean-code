@@ -7,8 +7,8 @@ export function functionUsingGlobalVariables(): void {
   }
 }
 
-// Zmienna zadeklarowana w miejscu użycia
 export function functionUsingLocalVariables(): void {
+  // Zmienna zadeklarowana w miejscu użycia
   const users = ['Tom', 'Jerry'];
   for (const user of users) {
     console.log(user);
@@ -30,7 +30,7 @@ export function functionWithUnnecessaryAssignmentOfVariable(): void {
 export function functionWithVariablesDeclaredAtTheBeginning(): void {
   const readFile = (_path: string): string[] => {
     return ['Name: John', 'Name: Jane', 'Name: Tom', 'Name: Jerry'];
-  }
+  };
   const file = 'file.txt';
   const path = '/path/to/file';
   const fullPath = `${path}/${file}`;
