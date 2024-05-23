@@ -47,7 +47,8 @@ export class ConstantValues {
     const array = [1, 2, 3] as const;
 
     array.push(4); // error - Property 'push' does not exist on type 'readonly number[]'
-    array[0] = 10; // error - Index signature in type 'readonly number[]' only permits reading
+    array[0] = 10; // error - Cannot assign to '0' because it is a read-only property
+    array = []; // error - Cannot assign to 'array' because it is a constant
     console.log(array);
   }
 
