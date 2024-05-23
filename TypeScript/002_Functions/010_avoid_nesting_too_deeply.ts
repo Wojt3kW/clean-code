@@ -3,23 +3,25 @@ import fs from 'fs';
 // Zbyt wiele instrukcji if else może sprawić, że kod będzie trudny do zrozumienia
 // Zamiast tego użyj wczesnego zwracania
 
-export class ShopWithDeepNesting {
-  public isShopOpen(day: string): boolean {
-    if (day !== null && day !== undefined) {
-      day = day.toLowerCase();
+// export class ShopWithDeepNesting {
+//   public isShopOpen(day: string): boolean {
+//     if (day !== null && day !== undefined) {
+//       day = day.toLowerCase();
 
-      if (day === 'friday') {
-        return true;
-      } else if (day === 'saturday') {
-        return true;
-      } else if (day === 'sunday') {
-        return true;
-      }
-      return false;
-    }
-    return false;
-  }
-}
+//       if (day === 'friday') {
+//         return true;
+//       } else if (day === 'saturday') {
+//         return true;
+//       } else if (day === 'sunday') {
+//         return true;
+//       } else {
+//         return false;
+//       }
+//     } else {
+//       return false;
+//     }
+//   }
+// }
 
 export class ShopWithEarlyReturn {
   private readonly _openingDays = ['friday', 'saturday', 'sunday'];
