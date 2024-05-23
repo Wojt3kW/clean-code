@@ -1,3 +1,5 @@
+/* eslint-disable no-magic-numbers */
+
 // Nie używaj magicznych stringów (magic strings)
 
 export class ProjectorWithMagicStrings {
@@ -35,8 +37,8 @@ export class ProjectorWithMagicStrings {
 const MovieGenre = {
   romantic: 'romantic',
   drama: 'drama',
-  COMEDY: 'comedy',
-  DOCUMENTARY: 'documentary',
+  comedy: 'comedy',
+  documentary: 'documentary',
 };
 
 export class ProjectorWithMagicConstants {
@@ -45,9 +47,9 @@ export class ProjectorWithMagicConstants {
       // ustaw jasność projektora na niską, głośność na cichą
     } else if (genre === MovieGenre.drama) {
       // ustawić jasność projektora na średnią, głośność na średnią
-    } else if (genre === MovieGenre.COMEDY) {
+    } else if (genre === MovieGenre.comedy) {
       // ustawić jasność projektora na wysoką, głośność na wysoką
-    } else if (genre === MovieGenre.DOCUMENTARY) {
+    } else if (genre === MovieGenre.documentary) {
       // ustawić jasność projektor na bardzo wysoką, głośność na bardzo wysoką
     }
   }
@@ -60,10 +62,10 @@ export class ProjectorWithMagicConstants {
       case MovieGenre.drama:
         // ustawić jasność projektora na średnią, głośność na średnią
         break;
-      case MovieGenre.COMEDY:
+      case MovieGenre.comedy:
         // ustawić jasność projektora na wysoką, głośność na wysoką
         break;
-      case MovieGenre.DOCUMENTARY:
+      case MovieGenre.documentary:
         // ustawić jasność projektor na bardzo wysoką, głośność na bardzo wysoką
         break;
     }
@@ -71,26 +73,26 @@ export class ProjectorWithMagicConstants {
 }
 
 // Użyj enumów zamiast magicznych stringów
-export enum GENRE {
-  ROMANTIC,
-  DRAMA,
-  COMEDY,
-  DOCUMENTARY,
+export enum Genre {
+  Romantic = 1,
+  Drama = 2,
+  Comedy = 3,
+  Documentary = 4,
 }
 
 export class ProjectorWithEnum {
-  public configure(genre: GENRE): void {
+  public configure(genre: Genre): void {
     switch (genre) {
-      case GENRE.ROMANTIC:
+      case Genre.Romantic:
         // ustaw jasność projektora na niską, głośność na cichą
         break;
-      case GENRE.DRAMA:
+      case Genre.Drama:
         // ustawić jasność projektora na średnią, głośność na średnią
         break;
-      case GENRE.COMEDY:
+      case Genre.Comedy:
         // ustawić jasność projektora na wysoką, głośność na wysoką
         break;
-      case GENRE.DOCUMENTARY:
+      case Genre.Documentary:
         // ustawić jasność projektor na bardzo wysoką, głośność na bardzo wysoką
         break;
     }
