@@ -54,26 +54,27 @@ class DbConfigImmutable implements IDbConfigImmutable {
   public constructor(
     public readonly hostName: string,
     public readonly portNumber: number,
-    public readonly dbName: string
+    public readonly dbName: string,
   ) {}
 }
 
 export abstract class ImmutableExample {
   public getConfig(): DbConfigImmutable {
     const config = new DbConfigImmutable('localhost', 3306, 'myDb');
-    // config.db = 'otherDb'; // error - Cannot assign to 'db' because it is a read-only property
+    config.dbName = 'otherDb'; // error - Cannot assign to 'db' because it is a read-only property
     return config;
   }
 
   public setArray(): void {
     const array: readonly number[] = [1, 2, 3];
-    // array = []; // error - Cannot assign to 'array' because it is a read-only property
-    // array.push(100); // error - Property 'push' does not exist on type 'readonly number[]'
+    array = []; // error - Cannot assign to 'array' because it is a read-only property
+    array.push(100); // error - Property 'push' does not exist on type 'readonly number[]'
     console.log(array);
   }
 
   public setArguments(args: readonly string[]): void {
-    // args.push('new element'); // error - Property 'push' does not exist on type 'readonly string[]'
-    // args = []; // error - Cannot assign to 'args' because it is a read-only property
+    args.push('new element'); // error - Property 'push' does not exist on type 'readonly string[]'
+    args = []; // error - Cannot assign to 'args' because it is a read-only property
+    console.log(args);
   }
 }
