@@ -9,19 +9,9 @@ export function between<T>(a1: T, a2: T, a3: T): boolean {
   return a2 <= a1 && a1 <= a3;
 }
 
-console.log(`between(1, 1, 3)=${between(1, 1, 3)}`);
-console.log(`between(4, 1, 3)=${between(4, 1, 3)}`);
-console.log(`between('a', 'a', 'z')=${between('a', 'a', 'z')}`);
-console.log(`between('d', 'a', 'c')=${between('d', 'a', 'c')}`);
-
 export function isBetween<T>(value: T, left: T, right: T): boolean {
   return left <= value && value <= right;
 }
-
-console.log(`isBetween(1, 1, 3)=${isBetween(1, 1, 3)}`);
-console.log(`isBetween(4, 1, 3)=${isBetween(4, 1, 3)}`);
-console.log(`isBetween('a', 'a', 'z')=${isBetween('a', 'a', 'z')}`);
-console.log(`isBetween('d', 'a', 'c')=${isBetween('d', 'a', 'c')}`);
 
 let value = 1;
 let result = value.isBetween(1, 3);
