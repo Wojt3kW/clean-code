@@ -1,8 +1,5 @@
 /* eslint-disable @typescript-eslint/no-extraneous-class */
 
-// Warunki trzymaj w osobnych funkcjach, które będą zwracać wartość logiczną.
-// Dzięki temu kod będzie bardziej czytelny i łatwiejszy do zrozumienia.
-
 class Subscription {
   public isTrial: boolean;
 }
@@ -11,11 +8,11 @@ class Account {
   public balance: number;
 }
 
+// Warunki trzymaj w osobnych funkcjach, które będą zwracać wartość logiczną.
+// Dzięki temu kod będzie bardziej czytelny i łatwiejszy do zrozumienia.
+
 export abstract class ServiceActivatorWithConditionals {
-  public constructor(
-    subscription: Subscription,
-    account: Account,
-  ) {
+  public constructor(subscription: Subscription, account: Account) {
     if (subscription.isTrial || account.balance > 0) {
       // ...
     }
@@ -23,10 +20,7 @@ export abstract class ServiceActivatorWithConditionals {
 }
 
 export abstract class ServiceActivatorWithEncapsulatedConditionals {
-  public constructor(
-    subscription: Subscription,
-    account: Account,
-  ) {
+  public constructor(subscription: Subscription, account: Account) {
     if (this.canActivate(subscription, account)) {
       // ...
     }
