@@ -7,7 +7,7 @@
 export class NotConstantValues {
   public notConstantObject(): void {
     const config = {
-      address: 'domain.com'
+      address: 'domain.com',
     };
 
     config.address = 'new-domain.com'; // value is changed
@@ -36,28 +36,27 @@ export class NotConstantValues {
 export class ConstantValues {
   public constantObject(): void {
     const config = {
-      address: 'domain.com'
+      address: 'domain.com',
     } as const;
 
-    // config.address = 'new-domain.com'; // error - Cannot assign to 'address' because it is a read-only property
+    config.address = 'new-domain.com'; // error - Cannot assign to 'address' because it is a read-only property
     console.log(config);
   }
 
   public constantArray(): void {
     const array = [1, 2, 3] as const;
 
-    // array.push(4); // error - Property 'push' does not exist on type 'readonly number[]'
-    // array[0] = 10; // error - Index signature in type 'readonly number[]' only permits reading
+    array.push(4); // error - Property 'push' does not exist on type 'readonly number[]'
+    array[0] = 10; // error - Index signature in type 'readonly number[]' only permits reading
     console.log(array);
   }
 
   public constantResult(): void {
     const result = this.getReadonlyData(100);
-    // result.value = 200; // error - Cannot assign to 'value' because it is a read-only property
+    result.value = 200; // error - Cannot assign to 'value' because it is a read-only property
     console.log(result);
   }
 
-  // writable objects is returned
   private getReadonlyData(value: number): { readonly value: number } {
     return { value } as const;
   }

@@ -74,7 +74,7 @@ export abstract class ImmutableExample {
 
   public setArguments(args: readonly string[]): void {
     args.push('new element'); // error - Property 'push' does not exist on type 'readonly string[]'
-    args = []; // error - Cannot assign to 'args' because it is a read-only property
+    args[0] = 'new value'; // error - Index signature in type 'readonly string[]' only permits reading
     console.log(args);
   }
 }
